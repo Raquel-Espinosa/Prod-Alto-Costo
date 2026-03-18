@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control de Actividades - Alto Costo</title>
-    <!-- Tailwind CSS para el diseño adaptativo y moderno -->
+    <!-- Tailwind CSS para el diseno adaptativo y moderno -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Ocultar flechas en los inputs numéricos */
+        /* Ocultar flechas en los inputs numericos */
         input[type=number]::-webkit-inner-spin-button, 
         input[type=number]::-webkit-outer-spin-button { 
             -webkit-appearance: none; 
@@ -30,12 +30,12 @@
 
     <main class="max-w-md mx-auto p-4 mt-4">
         
-        <!-- Pantalla de Configuración Inicial (Número de Empleado) -->
+        <!-- Pantalla de Configuracion Inicial (Numero de Empleado) -->
         <div id="setup-screen" class="bg-white rounded-xl shadow-md p-6 mb-6">
-            <h2 class="text-lg font-bold mb-4 text-center">Identificación</h2>
-            <p class="text-sm text-gray-600 mb-4 text-center">Ingrese su número de empleado para continuar.</p>
+            <h2 class="text-lg font-bold mb-4 text-center">Identificaci&oacute;n</h2>
+            <p class="text-sm text-gray-600 mb-4 text-center">Ingrese su n&uacute;mero de empleado para continuar.</p>
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2">Número de Empleado</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2">N&uacute;mero de Empleado</label>
                 <input type="text" id="num-empleado" maxlength="8" placeholder="Ej. AB123456" 
                     class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase"
                     oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase()">
@@ -45,7 +45,7 @@
             </button>
         </div>
 
-        <!-- Menú Principal -->
+        <!-- Menu Principal -->
         <div id="main-menu" class="hidden">
             <h2 class="text-lg font-bold mb-4 text-center text-gray-700">Seleccione una Actividad</h2>
             <div class="grid grid-cols-1 gap-4">
@@ -78,14 +78,14 @@
         <!-- Contenedor de Formularios -->
         <div id="form-container" class="hidden bg-white rounded-xl shadow-md p-6">
             <div class="flex justify-between items-center mb-6">
-                <h2 id="form-title" class="text-xl font-bold text-gray-800">Título</h2>
+                <h2 id="form-title" class="text-xl font-bold text-gray-800">T&iacute;tulo</h2>
                 <button onclick="closeForm()" class="text-gray-500 hover:text-red-500 font-bold">&times; Volver</button>
             </div>
 
             <form id="activity-form" onsubmit="submitData(event)">
                 <input type="hidden" id="actividad-actual">
 
-                <!-- Campos Dinámicos se mostrarán aquí -->
+                <!-- Campos Dinamicos se mostraran aqui -->
                 <div id="dynamic-fields" class="space-y-4"></div>
 
                 <div class="mt-8">
@@ -109,15 +109,15 @@
 
     <script>
         // ==========================================
-        // CONFIGURACIÓN DE URL DE GOOGLE APPS SCRIPT
+        // CONFIGURACION DE URL DE GOOGLE APPS SCRIPT
         // ==========================================
-        // ¡IMPORTANTE! Reemplaza esta URL con la tuya generada en el Paso 2 de las instrucciones.
+        // IMPORTANTE! Reemplaza esta URL con la tuya generada en el Paso 2 de las instrucciones.
         const URL_GOOGLE_SCRIPT = 'https://script.google.com/macros/s/AKfycby5clNpvUAABxhZz4qtJxwuhLTWVmXSrGB-TtRG3QpNSi1caouaqehzqsgcjCEmYB7d/exec';
         // ==========================================
 
         let empleadoActual = '';
 
-        // Inicialización
+        // Inicializacion
         document.addEventListener('DOMContentLoaded', () => {
             const guardado = localStorage.getItem('altoCosto_empleado');
             if (guardado) {
@@ -126,7 +126,7 @@
             }
         });
 
-        // Lógica de Empleado
+        // Logica de Empleado
         function saveEmployee() {
             const input = document.getElementById('num-empleado').value.trim();
             if (input.length > 0 && input.length <= 8) {
@@ -134,7 +134,7 @@
                 localStorage.setItem('altoCosto_empleado', empleadoActual);
                 showMainMenu();
             } else {
-                showAlert('Error', 'Debe ingresar un número de empleado válido (hasta 8 caracteres alfanuméricos).');
+                showAlert('Error', 'Debe ingresar un n&uacute;mero de empleado v&aacute;lido (hasta 8 caracteres alfanum&eacute;ricos).');
             }
         }
 
@@ -157,15 +157,15 @@
             userDisplay.classList.remove('hidden');
         }
 
-        // Lógica de Formularios Dinámicos
+        // Logica de Formularios Dinamicos
         const formConfigs = {
             'Cerrado': [
-                { id: 'tienda', label: 'Número de Tienda (7100 - 7501)', type: 'number', required: true, min: 7100, max: 7501 },
-                { id: 'entrega', label: 'Número de entrega', type: 'number', required: true },
+                { id: 'tienda', label: 'N&uacute;mero de Tienda (7100 - 7501)', type: 'number', required: true, min: 7100, max: 7501 },
+                { id: 'entrega', label: 'N&uacute;mero de entrega', type: 'number', required: true },
                 { id: 'piezas', label: 'Num de piezas', type: 'number', required: true }
             ],
             'Recibo': [
-                { id: 'ua', label: 'Número de UA', type: 'number', required: true },
+                { id: 'ua', label: 'N&uacute;mero de UA', type: 'number', required: true },
                 { id: 'piezasUa', label: '# Piezas UA', type: 'number', required: true }
             ],
             'Embarque': [
@@ -177,7 +177,7 @@
                 { id: 'grupo', label: 'Grupo', type: 'number', required: true }
             ],
             'Excel': [
-                { id: 'tienda', label: 'Número de Tienda (7100 - 7501)', type: 'number', required: true, min: 7100, max: 7501 },
+                { id: 'tienda', label: 'N&uacute;mero de Tienda (7100 - 7501)', type: 'number', required: true, min: 7100, max: 7501 },
                 { id: 'cajas', label: 'Num cajas', type: 'number', required: true }
             ]
         };
@@ -185,7 +185,7 @@
         function openForm(actividad) {
             document.getElementById('main-menu').classList.add('hidden');
             document.getElementById('form-container').classList.remove('hidden');
-            document.getElementById('form-title').textContent = actividad;
+            document.getElementById('form-title').innerHTML = actividad;
             document.getElementById('actividad-actual').value = actividad;
             
             const container = document.getElementById('dynamic-fields');
@@ -241,12 +241,12 @@
             return hh + ':' + mm + ':' + ss;
         }
 
-        // Envío de Datos
+        // Envio de Datos
         async function submitData(e) {
             e.preventDefault();
 
             if (URL_GOOGLE_SCRIPT.trim() === '') {
-                showAlert('Falta Configuración', 'El desarrollador debe colocar el URL de Google Apps Script en el código fuente para que la app funcione.');
+                showAlert('Falta Configuraci&oacute;n', 'El desarrollador debe colocar el URL de Google Apps Script en el c&oacute;digo fuente para que la app funcione.');
                 return;
             }
 
@@ -265,7 +265,7 @@
             formData.append('semana', getWeekNumber(now));
             formData.append('actividad', actividad);
 
-            // Obtener valores de los campos dinámicos
+            // Obtener valores de los campos dinamicos
             const config = formConfigs[actividad];
             let isValid = true;
 
@@ -275,7 +275,7 @@
                     const numVal = parseInt(val, 10);
                     if (numVal < field.min || numVal > field.max) {
                         isValid = false;
-                        showAlert('Error de validación', `El campo "${field.label}" debe estar entre ${field.min} y ${field.max}.`);
+                        showAlert('Error de validaci&oacute;n', `El campo "${field.label}" debe estar entre ${field.min} y ${field.max}.`);
                     }
                 }
                 formData.append(field.id, val);
@@ -294,16 +294,16 @@
                 });
 
                 if (response.ok) {
-                    showAlert('¡Éxito!', 'Los datos se guardaron correctamente en la hoja.');
-                    closeForm(); // Vuelve al menú
+                    showAlert('&iexcl;&Eacute;xito!', 'Los datos se guardaron correctamente en la hoja.');
+                    closeForm(); // Vuelve al menu
                 } else {
                     throw new Error('Respuesta de red no fue OK.');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                // Si falla el CORS pero el dato llega (comportamiento comun de google forms), mostramos éxito.
+                // Si falla el CORS pero el dato llega (comportamiento comun de google forms), mostramos exito.
                 // Para evitar confusiones, el App script debe regresar status 200.
-                showAlert('Aviso', 'Petición enviada. Revise su hoja de Google para confirmar.');
+                showAlert('Aviso', 'Petici&oacute;n enviada. Revise su hoja de Google para confirmar.');
                 closeForm();
             } finally {
                 resetButton(btn);
@@ -317,8 +317,8 @@
 
         // Alertas Personalizadas (reemplaza alert())
         function showAlert(title, message) {
-            document.getElementById('alert-title').textContent = title;
-            document.getElementById('alert-message').textContent = message;
+            document.getElementById('alert-title').innerHTML = title;
+            document.getElementById('alert-message').innerHTML = message;
             document.getElementById('alert-modal').classList.remove('hidden');
         }
 
